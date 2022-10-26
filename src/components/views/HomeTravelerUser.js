@@ -46,18 +46,19 @@ function HomeTravelerUser () {
 	//REVISAR STOPS
     return (
     	<div>
-				<h1>👋 Hello, Welcome USER NAME!</h1>
+				<h1>👋 Hola, bienvenido NAME!</h1>
 				<Grid className="trips" rowSpacing={3} justifyContent="center"columnSpacing={1} container>
-					{trips.map((trip,index) => (
+					{trips.map((trip) => (
 						<Grid item xs="auto" wrap="nowrap" container key={trip.id}>
 							<TripTraveler
-								num = {index+1}
+								key={trip.id}
 								driver={trip.driver}
 								addrInit={trip.addrInit}
 								addrFin={trip.addrFin}
 								initTime={trip.initTime}
 								stops = {trip.stops}
 								availableSeats = {trip.availableSeats}
+								content
 							></TripTraveler>
 						</Grid>
 					))}

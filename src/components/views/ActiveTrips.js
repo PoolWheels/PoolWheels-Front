@@ -6,7 +6,7 @@ import TripTraveler from "../TripUserTraveler"
 function ActiveTrips () {
 	const [inActive, setInActive] = useState({ inActive: false });
     const [trips, setTrips] = useState([]);
-	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4MDcwNDksImV4cCI6MTY2NjgxMDY0OX0.avmMg840JHnT3IfV1zWNFpNggaZ0J7TIBbWAxP7t4e0" });
+	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4MTQ4OTcsImV4cCI6MTY2NjgxODQ5N30.U0gEvo4A5bSkkaPeCfZl5kLhkd_E5dvPc3IHwZNjMuA" });
     useEffect(() => {
     	if (!(inActive.inActive)) {
 			try {
@@ -34,27 +34,25 @@ function ActiveTrips () {
 				console.log(error)
 			} 
 		}
-		else if(inActive.inActive){
-			console.log("ENTRE AL IF");
-			console.log("TRIPS render "+ trips[0].id);
-			trips.map((trip) => (console.log("TRIP " + trip.driver)))
-		}
 	}, [inActive,trips,token]);
+
 
     return (
     	<div>
-				<h1>🚗 Book a new trip.</h1>
+				<h1>🚗 RESERVA UN NUEVO VIAJE.</h1>
 				<Grid className="activeTrips" rowSpacing={3} justifyContent="center"columnSpacing={1} container>
-					{trips.map((trip,index) => (
+					{trips.map((trip) => (
 						<Grid item xs="auto" wrap="nowrap" container key={trip.id}>
-							<TripTraveler
-								num = {index+1}
+							<TripTraveler 
+								id={trip.id}
 								driver={trip.driver}
 								addrInit={trip.addrInit}
 								addrFin={trip.addrFin}
 								initTime={trip.initTime}
 								stops = {trip.stops}
 								availableSeats = {trip.availableSeats}
+								func = {'bookATrip'}
+								contentButton = 'RESERVAR VIAJE'
 							></TripTraveler>
 						</Grid>
 					))}

@@ -1,6 +1,9 @@
 @use "./base.scss";
 
 .numTrip{
+    display: flex;
+    align-items: center !important;
+    justify-content: center;
     font-family: monospace !important;
     color:base.$purple;
     letter-spacing: 3px !important;
@@ -8,19 +11,38 @@
     font-size: 20px !important;
 }
 
-.addrInit, .addrFin{
-    font-family: 'base.$dark-blue';
+.addrInit, .addrFin, .seats{
+    //font-family: 'base.$main-fonts';
+    font-family: 'base.$main-fonts' !important;
+    font-weight: bold !important;
+    
+
 }
 
 .initTime{
-    font-family: 'Franklin Gothic Medium'  !important;
+    font-family: 'base.$main-fonts';
     color:base.$dark-blue;
     letter-spacing: 3px !important;
     font-weight: bold !important;
 }
 
 .date, .stop{
-    font-family: base.$main-fonts;
+    font-family: monospace;
+    font-size: large;
     color: base.$purple;
     font-weight: bold !important;
 }
+
+.divBoton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative !important;
+    font-family: 'base.$main-fonts';
+
+    .boton {
+        position: absolute !important;
+        bottom: 10px !important;
+    }
+}
+

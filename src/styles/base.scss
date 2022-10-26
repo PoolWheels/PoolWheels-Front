@@ -4,3 +4,8 @@ $main-fonts: 'Source Sans Pro';
 $light-blue: rgb(92,225,230);
 $dark-blue: rgb(27,74,255);
 $purple: rgb(154,25,205);
+
+body {
+    font-family: $main-fonts;
+    margin: 0px;
+}
