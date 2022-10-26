@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import { Grid, TextField, Paper, Autocomplete, Stack, RadioGroup, Radio, FormControl, FormLabel, FormControlLabel} from "@mui/material";
+import { Grid, TextField, Paper,  Autocomplete, Stack, RadioGroup, Radio, FormControl, FormLabel, FormControlLabel} from "@mui/material";
+import { LocalizationProvider,  DatePicker } from '@mui/x-date-pickers'
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
+import dayjs, { Dayjs } from 'dayjs';
 import "../styles/Paymethods.scss";
 import Button from './Button.js';
 
@@ -29,11 +32,11 @@ export default function Paymethodform(){
     return (
         <div >
             <Paper>
+                <h1>Inscripción Tarjeta Nueva</h1>
                 <form ClassName = 'paymethodform'>
                     <Grid item xs = {6}>
-                    <br></br>
                     <FormControl>
-                            <FormLabel>type of payMethod</FormLabel>
+                            <FormLabel>Tipo de metodo de pago</FormLabel>
                                 <RadioGroup
                                 row
                                 name = "paymethodtype"
@@ -45,7 +48,9 @@ export default function Paymethodform(){
                                 </RadioGroup>
                         </FormControl>
                         <br></br>
-                        <FormLabel>Choose your bank</FormLabel>
+                        <br></br>
+                        <FormLabel>Selecciona tu Banco</FormLabel>
+                        <br></br>
                         <br></br>
                         <Stack spacing = {2}>
                             <Autocomplete
@@ -53,7 +58,7 @@ export default function Paymethodform(){
                             sx={{width:300}}
                             options = {banks} 
                             renderInput={(params) => <TextField {...params}/>} 
-                            labels = 'Banks' 
+                            labels = 'Bancos' 
                             name = "Numbercard"
                             value = {values.number}
                             >
@@ -61,31 +66,51 @@ export default function Paymethodform(){
                         </Stack>
 
                         <br></br>
-                        <FormLabel>Name of owner</FormLabel>
+                        <br></br>
+                        <FormLabel>Nombre del dueño</FormLabel>
+                        <br></br>
                         <br></br>
                         <TextField
                         variant = "outlined"
-                        label = "Full Name"
+                        label = "Nombre completo"
                         name = "Owner full name"
                         value = {values.owner}
                         onChange = {handleInputChange}
                         />
                         <br></br>
-                        
-                        <FormLabel>Number for the payment method</FormLabel>
+                        <br></br>
+                        <FormLabel>numero de metodo de pago</FormLabel>
+                        <br></br>
                         <br></br>
                         <TextField
                         variant = "outlined"
-                        label = "Card Number"
+                        label = "Numero"
                         name = "Numbercard"
                         value = {values.number}
                         onChange = {handleInputChange}
                         />
                         <br></br>
-                        
+                        <br></br>
+                        <FormLabel>fecha de expiracion</FormLabel>
+                        <br></br>
+                        <br></br>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
+                            views={['year', 'month']}
+                            label="Mes y año"
+                            minDate={dayjs('2012-03-01')}
+                            maxDate={dayjs('2023-06-01')}
+                            value={values.expirationDate}
+                            onChange={(newValue) => {
+                                setvalues(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} helperText={null} />}
+                            />
+                        </LocalizationProvider>
                     
                     </Grid>
                 </form>
+                <br></br>
                 <br></br>
                 <Button 
                 id = "newpaymeth" content = "Add Payment method" type = "submit" ></Button>
