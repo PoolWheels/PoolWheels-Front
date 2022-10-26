@@ -1,0 +1,26 @@
+@use "./base.scss";
+
+.numTrip{
+    font-family: monospace !important;
+    color:base.$purple;
+    letter-spacing: 3px !important;
+    font-weight: bold !important;
+    font-size: 20px !important;
+}
+
+.addrInit, .addrFin{
+    font-family: 'base.$dark-blue';
+}
+
+.initTime{
+    font-family: 'Franklin Gothic Medium'  !important;
+    color:base.$dark-blue;
+    letter-spacing: 3px !important;
+    font-weight: bold !important;
+}
+
+.date, .stop{
+    font-family: base.$main-fonts;
+    color: base.$purple;
+    font-weight: bold !important;
+}
