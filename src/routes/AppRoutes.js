@@ -20,8 +20,12 @@ export default function AppRoutes() {
                         <Route path="/landingpage" element={<LandingPage />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/about" element={<About />} />
-                        {/* <Route path="/" element={<Home />} /> */}
-                        <Route path="/userhome" element={<About />} />
+                        <Route path="/" element={<LandingPage />} />
+                        {/* <Route path="/userhome" element={<UserHome />} /> */}
+                        {/* <Route path="/profile/paymethods" element={<PaymentMethodsLandingPage />} /> */}
+                        {/* <Route path="/profile/paymethods/newpaymethodspage" element={<NewPayMethodsLandingPage />} /> */}
+                        {/* <Route path="/profile" element={<Profile />} /> */}
+                        {/* <Route path="/frequentquestions" element={<FrequentQuestions />} /> */}
                     </Routes>
                 </div>
             </main>

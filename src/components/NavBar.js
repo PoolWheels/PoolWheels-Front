@@ -11,9 +11,6 @@ export default function NavBar() {
                     <Link to="/landingpage">Landing Page</Link>
                 </li>
                 <li>
-                    <Link to="/login">Login</Link>
-                </li>
-                <li>
                     <Link to="/about">About</Link>
                 </li>
                 <li>
@@ -29,6 +26,12 @@ export default function NavBar() {
                         <button className='logout-button' onClick={() => auth.logout()}>Logout</button>
                     </div>
                 )} */}
+                <li>
+                    <Link to="/Profile">Profile</Link>
+                </li>
+                <li>
+                    <Link to="/login">Login</Link>
+                </li>
             </ul>
         </nav>
     );
