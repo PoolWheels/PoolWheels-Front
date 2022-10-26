@@ -19,6 +19,7 @@ function TripTraveler(props) {
 				<Typography className="driver"> {props.driver}</Typography>
 				<Typography className="addrInit">PUNTO DE PARTIDA: {props.addrInit}</Typography>
 				<Typography className="addrInit">PUNTO FINAL: {props.addrFin}</Typography>
+				<Typography className="addrInit">PUESTOS DISPONIBLES: {props.availableSeats}</Typography>
 				{formatStops(props.stops).map((stop) => <p className="stop">{stop[0] + ": " +stop[1]}</p>)}
 				<Typography className="initTime"> HORA DE SALIDA: {props.initTime}</Typography>
 			</CardContent>

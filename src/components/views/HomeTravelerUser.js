@@ -42,18 +42,12 @@ function HomeTravelerUser () {
 				console.log(error)
 			} 
 		}
-		else if(inHome.inHome){
-			console.log("ENTRE AL IF");
-			console.log("TRIPS render "+ trips[0].id);
-			trips.map((trip) => (console.log("TRIP " + trip.driver)))
-		}
 	}, [inHome,trips,token]);
 	//REVISAR STOPS
     return (
     	<div>
-				{/* NAV BAR HEEEEREEEE */}
 				<h1>👋 Hello, Welcome USER NAME!</h1>
-				<Grid className="tasks" rowSpacing={3} justifyContent="center"columnSpacing={1} container>
+				<Grid className="trips" rowSpacing={3} justifyContent="center"columnSpacing={1} container>
 					{trips.map((trip,index) => (
 						<Grid item xs="auto" wrap="nowrap" container key={trip.id}>
 							<TripTraveler
@@ -63,6 +57,7 @@ function HomeTravelerUser () {
 								addrFin={trip.addrFin}
 								initTime={trip.initTime}
 								stops = {trip.stops}
+								availableSeats = {trip.availableSeats}
 							></TripTraveler>
 						</Grid>
 					))}
