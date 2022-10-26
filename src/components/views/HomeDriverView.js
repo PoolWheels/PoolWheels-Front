@@ -1,15 +1,20 @@
-import {React, useEffect, useState, useContext} from "react";
+import { React, useEffect, useState, useContext } from "react";
 import '../../styles/Driver.scss';
-import {Grid} from '@mui/material'
 import { useNavigate } from 'react-router-dom';
+import Button from "../Button";
 
-function DriverView(){
+function DriverView() {
 
-    const url = 'http://localhost:8080/api/v1/trip';
+    // const navigate = useNavigate();
 
-    return(
-        <div>
-            <h1>Hello!!</h1>
+    return (
+        <div className="component">
+            <h1>Hello</h1>
+            <Button
+                id="newTrip"
+                content="Create New Trip"
+                type="submit"
+            ></Button>
         </div>
     )
 

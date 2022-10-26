@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import DriverView from './components/views/HomeDriverView';
+import NewTripView from './components/views/NewTripView';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
     //    </header>
     //  </div>
 
-    <DriverView/>
+    // <DriverView />
+    <NewTripView />
 
   );
 }
