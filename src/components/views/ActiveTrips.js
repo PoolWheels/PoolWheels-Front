@@ -8,12 +8,10 @@ function ActiveTrips () {
     const [trips, setTrips] = useState([]);
 	const [res, setResponse] = useState('');
 	const [change, setChange] = useState({ change: false });
-	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4NTEwODIsImV4cCI6MTY2Njg1NDY4Mn0.XwthFg6LC12Jxo5VWywQiTNwLlTzDWhDNrpQUyP8gDg" });
+	const [token, setToken] = useState({token:'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4ODEwNzEsImV4cCI6MTY2Njg4NDY3MX0.q__P0-dLbqJlcAkwM99ySousdeh8xaylaJ6EAjETwbc'});
     useEffect(() => {
     	if (!(inActive.inActive) || (change.change)) {		
 			try {
-                // 1. Traer los viajes activos y organizarlos. Cada uno con la función de reservar.
-				// Mostrar lso que tengan puestos disponibles
 				const requestOptionsToInfo = {
 					method: 'GET',
 					headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + token.token}

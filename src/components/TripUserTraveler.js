@@ -7,7 +7,6 @@ import Modal from './ModalDriver.jsx'
 function TripTraveler(props) {
 	const [openModal, setOpenModal] = useState(false);
 	const [driverInfo, setDriverInfo] = useState(false);
-	var user = ''
 
 	const formatStops= (stops) =>{
 		const arrayStops = []
@@ -27,7 +26,7 @@ function TripTraveler(props) {
           "Access-Control-Allow-Origin": "*",
           Authorization:
             "Bearer " +
-            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4NTM0NTgsImV4cCI6MTY2Njg1NzA1OH0.VaLxkUJUjkMgxbFdnfoB7jmUtyvpAw5hIndkoU8BZa0",
+            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4ODEwNzEsImV4cCI6MTY2Njg4NDY3MX0.q__P0-dLbqJlcAkwM99ySousdeh8xaylaJ6EAjETwbc",
         },
       }; 
 			const urlgetdriver = 'http://localhost:8080/api/v1/user/driverusers/' + id

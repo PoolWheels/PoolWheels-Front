@@ -10,24 +10,17 @@ function HomeTravelerUser () {
     const [trips, setTrips] = useState([]);
 	const [token, setToken] = useState({
     token:
-      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4NTM0NTgsImV4cCI6MTY2Njg1NzA1OH0.VaLxkUJUjkMgxbFdnfoB7jmUtyvpAw5hIndkoU8BZa0",
+      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4ODEwNzEsImV4cCI6MTY2Njg4NDY3MX0.q__P0-dLbqJlcAkwM99ySousdeh8xaylaJ6EAjETwbc",
   });
     useEffect(() => {
     	if (!(inHome.inHome) || (change.change)) {
-			try {
-				// 1. Token -> useContext (Camilo)
-				// 2. Hacer la peticion - Viajes en los que esta el usuario(Viajes activos) (IN PROCESS)
-				// 3. Peticion de viajes activos no reservados cuando le de en buscar (IN PROCESS)
-				// 4. Funcion cancelar viaje para cada uno de los viajes (IN PROCESS)
-				// 5. Mostrar informacion del conductor al dar click en el nombre (IN PROCESS)
-				
+			try {	
 				const idUser = '634b051b464bb818bb2e611f'
 				const requestOptionsToInfo = {
 					method: 'GET',
 					headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + token.token}
 				}
 				//Token  y User FIN //
-				//VIAJEEEES
 				const urlTrips = 'http://localhost:8080/api/v1/trip/trips/' + idUser
 				const asyncGetTripActive = async () => {
 					try {
@@ -47,7 +40,6 @@ function HomeTravelerUser () {
 			} 
 		}
 	}, [inHome,trips,token,change]);
-	//cancelar viajes - removePassengerReservation
 	const cancelTrip = async (idT) => {
 		const requestOptionsToCancel = {
 			method: 'DELETE',
