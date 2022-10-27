@@ -9,6 +9,7 @@ export default function Profile(){
     const navigate = useNavigate();
     const auth = useAuth();
     const idUser = auth.userId;
+    const userRol = auth.userRol;
     const [profileData, setProfileData] = React.useState({});
     const [redirect, setRedirect] = React.useState(false);
 
@@ -21,10 +22,12 @@ export default function Profile(){
             navigate('/profile/paymethods');
         }
     }, [redirect]);
+    
 
     async function getProfile(){
         try{
-            var response = await fetch('http://localhost:8080/api/v1/user/driverusers/'+ idUser, {
+            const endPoint = userRol === 'DRIVER' ? 'driverusers/':'travelerusers/';
+            var response = await fetch('http://localhost:8080/api/v1/user/' + endPoint + idUser, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
