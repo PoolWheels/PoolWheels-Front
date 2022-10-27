@@ -5,10 +5,6 @@ import Button from './Button';
 import { ScrollRestoration } from "react-router-dom";
 
 function TripTraveler(props) {
-
-	const [submit, setSubmit] = useState({submit:false});
-	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4MTQ4OTcsImV4cCI6MTY2NjgxODQ5N30.U0gEvo4A5bSkkaPeCfZl5kLhkd_E5dvPc3IHwZNjMuA" });
-
 	const formatStops= (stops) =>{
 		const arrayStops = []
 		for (let key in stops){
@@ -29,9 +25,7 @@ function TripTraveler(props) {
 				<div className= 'divBoton'>
 					<Button  className="boton"align = 'center'
 						type = "submit"
-						onClick = { e =>
-							{console.log("HOLA HACIENDO LA RESERVA...")	}
-						}
+						onClick = {e => props.func(props.id)}
 						content = {props.contentButton}
 					></Button>
 				</div>

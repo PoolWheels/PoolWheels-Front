@@ -2,12 +2,12 @@ import {React, useState,useEffect} from 'react'
 import "../../styles/ActiveTrips.scss";
 import { Grid } from "@mui/material";
 import TripTraveler from "../TripUserTraveler"
-import Button from '../Button'
 
 function ActiveTrips () {
 	const [inActive, setInActive] = useState({ inActive: false });
     const [trips, setTrips] = useState([]);
-	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4MzAxMDcsImV4cCI6MTY2NjgzMzcwN30.LwPHY9VAzlEoJNPFb-LK9I4Cte8V8HT8dlnuGMcdP6k" });
+	const [res, setResponse] = useState('');
+	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4MzM0NzMsImV4cCI6MTY2NjgzNzA3M30.IkhaHEPqO4yiNHCIof2ilKgWspDaZNRS1JSyTOsejm4" });
     useEffect(() => {
     	if (!(inActive.inActive)) {
 			try {
@@ -37,6 +37,18 @@ function ActiveTrips () {
 		}
 	}, [inActive,trips,token]);
 
+	const bookTrip = async (idT) => {
+			const requestOptionsToBook = {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + token.token},
+			} 
+
+			const urlBookReservation = 'http://localhost:8080/api/v1/trip/'+idT+"/passengers/634b051b464bb818bb2e611f"
+			const response = await fetch(urlBookReservation, requestOptionsToBook);
+			const data = await response.json().then(value => {
+						setResponse(value);
+			});	
+	}
 
     return (
     	<div>
@@ -52,7 +64,7 @@ function ActiveTrips () {
 								initTime={trip.initTime}
 								stops = {trip.stops}
 								availableSeats = {trip.availableSeats}
-								func = {'bookATrip'}
+								func = {bookTrip}
 								contentButton = 'RESERVAR VIAJE'
 							>
 							</TripTraveler>
