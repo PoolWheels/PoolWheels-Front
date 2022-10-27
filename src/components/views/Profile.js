@@ -2,10 +2,11 @@ import '../../styles/profile.scss'
 import avatar from '../../img/avatar.png'
 import { useAuth } from '../../contexts/Auth';
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
 
 export default function Profile(){
-
+    const navigate = useNavigate();
     const auth = useAuth();
     const [profileData, setProfileData] = React.useState({});
 
@@ -66,6 +67,9 @@ export default function Profile(){
                     <Button 
                         size="small"
                         variant="contained"
+                        onClick={() => {
+                            navigate('/profile/paymethods');
+                        }}
                     >
                         Métodos de pago
                     </Button>
