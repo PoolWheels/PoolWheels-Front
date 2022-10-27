@@ -6,7 +6,7 @@ import DriverView from './components/views/HomeDriverView';
 
 function App() {
   return (
-    <ActiveTrips></ActiveTrips>
+    <HomeTravelerUser></HomeTravelerUser>
   );
 
 }

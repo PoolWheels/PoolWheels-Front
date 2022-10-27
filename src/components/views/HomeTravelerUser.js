@@ -8,7 +8,10 @@ function HomeTravelerUser () {
 	const [change, setChange] = useState({ change: false });
 	const [res, setResponse] = useState('');
     const [trips, setTrips] = useState([]);
-	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4MzgzODAsImV4cCI6MTY2Njg0MTk4MH0.IJ8K1Vurcn5VnXYCYZj5ignjk080Tf8JLdGATM-BkK8" });
+	const [token, setToken] = useState({
+    token:
+      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4NTM0NTgsImV4cCI6MTY2Njg1NzA1OH0.VaLxkUJUjkMgxbFdnfoB7jmUtyvpAw5hIndkoU8BZa0",
+  });
     useEffect(() => {
     	if (!(inHome.inHome) || (change.change)) {
 			try {
@@ -46,7 +49,6 @@ function HomeTravelerUser () {
 	}, [inHome,trips,token,change]);
 	//cancelar viajes - removePassengerReservation
 	const cancelTrip = async (idT) => {
-		console.log("CANCELAAANDOO");
 		const requestOptionsToCancel = {
 			method: 'DELETE',
 			headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + token.token},

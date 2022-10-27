@@ -1,6 +1,6 @@
 import {React, useState,useEffect} from 'react'
 import "../../styles/ActiveTrips.scss";
-import { Grid } from "@mui/material";
+import { getInitColorSchemeScript, Grid } from "@mui/material";
 import TripTraveler from "../TripUserTraveler"
 
 function ActiveTrips () {
@@ -8,9 +8,9 @@ function ActiveTrips () {
     const [trips, setTrips] = useState([]);
 	const [res, setResponse] = useState('');
 	const [change, setChange] = useState({ change: false });
-	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4MzgzODAsImV4cCI6MTY2Njg0MTk4MH0.IJ8K1Vurcn5VnXYCYZj5ignjk080Tf8JLdGATM-BkK8" });
+	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4NTEwODIsImV4cCI6MTY2Njg1NDY4Mn0.XwthFg6LC12Jxo5VWywQiTNwLlTzDWhDNrpQUyP8gDg" });
     useEffect(() => {
-    	if (!(inActive.inActive) || (change.change)) {
+    	if (!(inActive.inActive) || (change.change)) {		
 			try {
                 // 1. Traer los viajes activos y organizarlos. Cada uno con la función de reservar.
 				// Mostrar lso que tengan puestos disponibles
@@ -25,6 +25,7 @@ function ActiveTrips () {
 						const data = await response.json().then(value => {
 							setTrips(value);
 							setInActive({ inActive: true });
+							//setChange({change: true})
 						});
 						return data;
 					} catch(error) {
@@ -35,7 +36,9 @@ function ActiveTrips () {
 			}catch(error) {
 				console.log(error)
 			} 
-		}
+		
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+		}			
 	}, [inActive,trips,token,change]);
 
 	const bookTrip = async (idT) => {
