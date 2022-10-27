@@ -8,6 +8,7 @@ import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@
 export default function Profile(){
     const navigate = useNavigate();
     const auth = useAuth();
+    const idUser = auth.userid
     const [profileData, setProfileData] = React.useState({});
     const [redirect, setRedirect] = React.useState(false);
 
@@ -23,7 +24,7 @@ export default function Profile(){
 
     async function getProfile(){
         try{
-            var response = await fetch('http://localhost:8080/api/v1/user/driverusers/634b0439a2992f7d8e9f1046', {
+            var response = await fetch('http://localhost:8080/api/v1/user/driverusers/'+ idUser, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
