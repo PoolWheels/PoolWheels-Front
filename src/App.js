@@ -5,7 +5,7 @@ import NewPayMethod from './components/views/NewPayMethodPage';
 
 function App() {
   return (
-    < PayMethodsLandingPage/>
+    < NewPayMethod />
   );
 }
 

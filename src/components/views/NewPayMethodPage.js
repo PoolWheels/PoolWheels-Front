@@ -12,4 +12,5 @@ function NewPayMethodsPage() {
     );
   }
   
+  
   export default NewPayMethodsPage;
