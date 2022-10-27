@@ -3,23 +3,25 @@ import { Grid } from "@mui/material";
 import Button from '../Button.js';
 import PayMethodS from "../PayMethodS.js"
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/Auth';
 
 
 
 function PayMethodsLandingPage() {
     const [PayMethods, setPayMethods] = useState([]);
     const [inLPage, setInLPage] = useState({ inHome: false });
-    const [deleted, setDeleted]= useState({deleted:false})
-	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4NDMwMTMsImV4cCI6MTY2Njg0NjYxM30.v-9hHQ0HVu5VryctZCZhDZ__KCiV_rv7lCSfPSaB6ok" });
+    const [deleted, setDeleted]= useState({deleted:false});
+    const auth = useAuth();
+	
     useEffect(() => {
     	if (!(inLPage.inHome) || (deleted.deleted)) {
 			try {
 				const idUser = '634b051b464bb818bb2e611f'
 				const requestOptionsToInfo = {
 					method: 'GET',
-					headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + token.token}
+					headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + auth.token}
 				}
-				
+				console.log(auth.token)
 				const urlTrips = 'http://localhost:8080/api/v1/paymethod/Paymeths/' + idUser
 				const asyncGetpaymethuser = async () => {
 					try {
@@ -38,17 +40,19 @@ function PayMethodsLandingPage() {
 				console.log(error)
 			} 
 		}
-	}, [inLPage,deleted,PayMethods,token]);
+	}, [inLPage,deleted,PayMethods,auth.token]);
 
     const cancelpaymethod = (idpaymethods)=>{
         try {
-            const idUser = '634b051b464bb818bb2e611f'
+            console.log(idpaymethods)
             const requestOptionsToInfo = {
                 method: 'DELETE',
-                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + token.token}
+                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + auth.token}
             }
             
             const urlTrips = 'http://localhost:8080/api/v1/paymethod/' + idpaymethods
+
+            console.log(urlTrips)
 
             const asyncGetpaymethuser = async () => {
                 try {
