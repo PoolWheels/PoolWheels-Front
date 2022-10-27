@@ -1,14 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-import HomeTravelerUser from "./components/views/HomeTravelerUser";
-import ActiveTrips from './components/views/ActiveTrips';
-import DriverView from './components/views/HomeDriverView';
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
-    <HomeTravelerUser></HomeTravelerUser>
+    <AppRoutes />
   );
-
 }
 
 export default App;

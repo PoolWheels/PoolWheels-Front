@@ -1,46 +1,50 @@
 import React, { useState } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
-import '../styles/TripUserTraveler.scss'
-import Button from './Button';
-import Modal from './ModalDriver.jsx'
+import "../styles/TripUserTraveler.scss";
+import Button from "./Button";
+import Modal from "./ModalDriver.jsx";
+//Context
+import { useAuth } from "../contexts/Auth";
 
 function TripTraveler(props) {
-	const [openModal, setOpenModal] = useState(false);
-	const [driverInfo, setDriverInfo] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [driverInfo, setDriverInfo] = useState(false);
+  const auth = useAuth();
 
-	const formatStops= (stops) =>{
-		const arrayStops = []
+  const formatStops = (stops) => {
+    const arrayStops = [];
 
-		for (let key in stops){
-			arrayStops.push([key,stops[key]]);
-		}
-		return arrayStops
-	}
+    for (let key in stops) {
+      arrayStops.push([key, stops[key]]);
+    }
+    return arrayStops;
+  };
 
-	const getDriver = async (id) => {
-		return new Promise(resolve => {
-			const requestOptionsToDriver = {
+  const getDriver = async (id) => {
+    return new Promise((resolve) => {
+      const requestOptionsToDriver = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
-          Authorization:
-            "Bearer " +
-            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4ODcxNTAsImV4cCI6MTY2Njg5MDc1MH0.WPLMzCG-d-Xmcz9wBbFlygrI-dFHCfKi0IaanJhTyiQ",
+          Authorization: "Bearer " + auth.token,
         },
-      }; 
-			const urlgetdriver = 'http://localhost:8080/api/v1/user/driverusers/' + id
-			return resolve(
-                fetch(urlgetdriver, requestOptionsToDriver).then(res => res.json()).then(json => {
-					setDriverInfo(json);
-					setOpenModal(true);
-                    return json;
-                })
-            );
-        });
-	};	
+      };
+      const urlgetdriver =
+        "http://localhost:8080/api/v1/user/driverusers/" + id;
+      return resolve(
+        fetch(urlgetdriver, requestOptionsToDriver)
+          .then((res) => res.json())
+          .then((json) => {
+            setDriverInfo(json);
+            setOpenModal(true);
+            return json;
+          })
+      );
+    });
+  };
 
-	return (
+  return (
     <Card variant="outlined">
       <CardContent className="divgeneral">
         <div className="divDriver">
