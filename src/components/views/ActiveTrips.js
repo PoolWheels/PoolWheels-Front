@@ -2,11 +2,12 @@ import {React, useState,useEffect} from 'react'
 import "../../styles/ActiveTrips.scss";
 import { Grid } from "@mui/material";
 import TripTraveler from "../TripUserTraveler"
+import Button from '../Button'
 
 function ActiveTrips () {
 	const [inActive, setInActive] = useState({ inActive: false });
     const [trips, setTrips] = useState([]);
-	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4MTQ4OTcsImV4cCI6MTY2NjgxODQ5N30.U0gEvo4A5bSkkaPeCfZl5kLhkd_E5dvPc3IHwZNjMuA" });
+	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4MzAxMDcsImV4cCI6MTY2NjgzMzcwN30.LwPHY9VAzlEoJNPFb-LK9I4Cte8V8HT8dlnuGMcdP6k" });
     useEffect(() => {
     	if (!(inActive.inActive)) {
 			try {
@@ -53,7 +54,8 @@ function ActiveTrips () {
 								availableSeats = {trip.availableSeats}
 								func = {'bookATrip'}
 								contentButton = 'RESERVAR VIAJE'
-							></TripTraveler>
+							>
+							</TripTraveler>
 						</Grid>
 					))}
 				</Grid>

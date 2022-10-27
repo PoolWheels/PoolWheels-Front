@@ -7,7 +7,6 @@ import { ScrollRestoration } from "react-router-dom";
 function TripTraveler(props) {
 
 	const [submit, setSubmit] = useState({submit:false});
-	const [func, setFunction] = useState({function:''});
 	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4MTQ4OTcsImV4cCI6MTY2NjgxODQ5N30.U0gEvo4A5bSkkaPeCfZl5kLhkd_E5dvPc3IHwZNjMuA" });
 
 	const formatStops= (stops) =>{
@@ -17,29 +16,6 @@ function TripTraveler(props) {
 		}
 		return arrayStops
 	}
-
-	useEffect(() => {
-		if ((submit.submit) && (func === 'bookATrip')) {
-			//Hacer una reserva
-			const bookTrip = async (idTrip) => {
-				try {
-					const requestOptionsToInfo = {
-						method: 'POST',
-						headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + token.token}, 
-						body: {'idTrip': idTrip, 'idUser':"634b051b464bb818bb2e611f"}
-					}
-					const urlActiveTrips = 'http://localhost:8080/api/v1/trip/'+idTrip+"/"+'634b051b464bb818bb2e611f';
-					const response = await fetch(urlActiveTrips, requestOptionsToInfo);
-					const data = await response.json().then(value => {
-					});
-					return data;
-				} catch(error) {
-						console.log(error)
-				} 
-			}
-			bookTrip();
-		}
-	},[submit])
 
 	return (
 		<Card variant="outlined">
@@ -52,11 +28,10 @@ function TripTraveler(props) {
 				<Typography className="initTime"> HORA DE SALIDA: {props.initTime}</Typography>
 				<div className= 'divBoton'>
 					<Button  className="boton"align = 'center'
-						onClick = {
-							setFunction({func:props.func}),
-							setSubmit({submit: true})
-							}
 						type = "submit"
+						onClick = { e =>
+							{console.log("HOLA HACIENDO LA RESERVA...")	}
+						}
 						content = {props.contentButton}
 					></Button>
 				</div>
