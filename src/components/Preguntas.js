@@ -1,17 +1,21 @@
 import '../styles/faq.scss'
-//import { useAuth } from '../contexts/Auth';
-import React from 'react'
-import testComments from './testComments';
-import Button from '@mui/material/Button';
+import { useAuth } from '../contexts/Auth';
+import React, { useEffect } from 'react'
+import { Button,  TextField, MenuItem, Select, OutlinedInput, InputLabel } from '@mui/material';
 
 export default function Preguntas(){
 
-    //const auth = React.useAuth();
-    const [comments, setComments] = React.useState(testComments);
+    const auth = useAuth();
+    const [post, setPost] = React.useState(false);
+    const [comments, setComments] = React.useState([]);
     const [newComment, setNewComment] = React.useState({
         text: "",
         type: ""
     });
+
+    useEffect(()=>{
+        getComments();
+    }, [post]);
 
     async function getComments(){
         try{
@@ -20,10 +24,9 @@ export default function Preguntas(){
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
-                    'Authorization' : 'Bearer '
+                    'Authorization' : 'Bearer ' + auth.token
                 }});
             var data = await response.json();
-            console.log(data);
             setComments(data);
         }catch(e){
             console.log(e.message);
@@ -37,19 +40,18 @@ export default function Preguntas(){
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
-                    'Authorization' : 'Bearer '
+                    'Authorization' : 'Bearer ' + auth.token
                 },
                 body: JSON.stringify(
                     {
                        user: "0001",
-                       creationDate: "",
+                       creationDate: new Date().toJSON(),
                        modificationDate: "",
                        description: newComment.text,
                        type: newComment.type
                     }
                 )});
-            var data = await response.json();
-            console.log(data);
+            setPost(prev => !prev);
         }catch(e){
             console.log(e.message);
         }
@@ -65,7 +67,7 @@ export default function Preguntas(){
 
     function handleSubmit(event){
         event.preventDefault();
-
+        postComments();
     }
 
     const mappedComments = comments.map( comment => {
@@ -88,32 +90,38 @@ export default function Preguntas(){
             <hr />
             <div className='form-container'>
                 <form onSubmit={handleSubmit}>
-                    <textarea 
-                        value={newComment.text}
-                        placeholder="Comments"
-                        name="text"
+                    <TextField
                         id="comment"
-                        rows="4" 
-                        cols="80"
+                        name="text"
+                        label="Comentario"
+                        multiline
+                        rows={4}
+                        cols={80}
+                        value={newComment.text}
+                        variant="filled"
                         onChange={handleChange}
                     />
                     <br/>
-                    <select 
-                        id="type"
+                    <br/>
+                    <InputLabel id="select-label">Selecciona un tipo</InputLabel>
+                    <Select
+                        labelId="select-label"
+                        label="Selecciona un tipo"
+                        id="select"
                         value={newComment.type}
                         onChange={handleChange}
                         name="type"
                     >
-                        <option value="">-- Choose --</option>
-                        <option value="SUGGESTION">Suggestion</option>
-                        <option value="COMPLAINT">Complaint</option>
-                    </select>
+                        <MenuItem value="SUGGESTION">Sugerencia</MenuItem>
+                        <MenuItem value="COMPLAINT">Queja</MenuItem>
+                    </Select>
                     <br/>
                     <br/>
                     <Button
                         variant="contained"
+                        type="submit"
                     >
-                        Send
+                        Enviar
                     </Button>
                 </form>
             </div>

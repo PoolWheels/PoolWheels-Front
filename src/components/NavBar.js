@@ -14,11 +14,13 @@ export default function NavBar() {
                 <li>
                     <Link to="/userhome">User Home</Link>
                 </li>
-                <li>
-                    <Link to="/Profile/paymethods">Profile</Link>
+                    <Link to="/profile">Profile</Link>
                 </li>
                 <li>
                     <Link to="/about">About</Link>
+                </li>
+                <li>
+                    <Link to="/frequentquestions">Preguntas frecuentes</Link>
                 </li>
                 {!auth.userEmail && (
                     <li>
