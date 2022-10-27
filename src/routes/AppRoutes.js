@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar";
 import LandingPage from "../components/views/LandingPage";
 import Login from "../components/views/Login";
 import About from "../components/views/about";
+import DriverView from "../components/views/HomeDriverView";
 
 export default function AppRoutes() {
 
@@ -21,7 +22,7 @@ export default function AppRoutes() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/" element={<LandingPage />} />
-                        {/* <Route path="/userhome" element={<UserHome />} /> */}
+                        <Route path="/userhome" element={<DriverView />} />
                         {/* <Route path="/profile/paymethods" element={<PaymentMethodsLandingPage />} /> */}
                         {/* <Route path="/profile/paymethods/newpaymethodspage" element={<NewPayMethodsLandingPage />} /> */}
                         {/* <Route path="/profile" element={<Profile />} /> */}
