@@ -42,9 +42,9 @@ export default function Paymethodform(){
                                 name = "paymethodtype"
                                 value = {values.type}
                                 onChange = {handleInputChange}>
-                                    <FormControlLabel value = "Bank" control = {<Radio />} label = "Bank Account" />
-                                    <FormControlLabel value = "Nequi" control = {<Radio />} label = "Nequi" />
-                                    <FormControlLabel value = "DaviPlata" control = {<Radio />} label = "DaviPlata" />
+                                    <FormControlLabel value = "Credit" control = {<Radio />} label = "Bank Account" />
+                                    <FormControlLabel value = "Debit" control = {<Radio />} label = "Nequi" />
+                                    <FormControlLabel value = "VirtualWallet" control = {<Radio />} label = "DaviPlata" />
                                 </RadioGroup>
                         </FormControl>
                         <br></br>
