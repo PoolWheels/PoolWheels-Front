@@ -112,8 +112,6 @@ export default function Paymethodform(){
                 </form>
                 <br></br>
                 <br></br>
-                <Button 
-                id = "newpaymeth" content = "Add Payment method" type = "submit" ></Button>
             </Paper>
         </div>
     )
