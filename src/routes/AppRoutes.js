@@ -9,6 +9,7 @@ import Faq from "../components/views/Faq";
 import Profile from "../components/views/Profile";
 import PayMethodsLandingPage from "../components/views/PayMethodsLandingPage";
 import NewPayMethodsPage from "../components/views/NewPayMethodPage";
+import RequireAuth from "../utils/RequireAuth";
 
 export default function AppRoutes() {
     return (
@@ -25,9 +26,9 @@ export default function AppRoutes() {
                         <Route path="/about" element={<About />} />
                         <Route path="/" element={<LandingPage />} />
                         {/* <Route path="/userhome" element={<UserHome />} /> */}
-                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
                         <Route path="/frequentquestions" element={<Faq />} />
-                        <Route path="/profile/paymethods" element={<PayMethodsLandingPage />} /> 
+                        <Route path="/profile/paymethods" element={<RequireAuth><PayMethodsLandingPage /></RequireAuth>} /> 
                         <Route path="/profile/paymethods/newpaymethodspage" element={<NewPayMethodsPage />} /> 
                     </Routes>
                 </div>

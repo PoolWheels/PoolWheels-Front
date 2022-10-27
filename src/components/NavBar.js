@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/navbar.scss';
 import { useAuth } from '../contexts/Auth';
+import Button from './Button';
 
 export default function NavBar() {
     const auth = useAuth();
@@ -30,7 +31,7 @@ export default function NavBar() {
                 )}
                 {auth.userEmail && (
                     <div className='logout'>
-                        <button className='logout-button' onClick={() => auth.logout()}>Logout</button>
+                        <Button onClick={() => auth.logout()} content="Logout" type="submit"></Button>
                     </div>
                 )}
             </ul>
