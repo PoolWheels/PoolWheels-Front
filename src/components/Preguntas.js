@@ -45,7 +45,7 @@ export default function Preguntas(){
                 body: JSON.stringify(
                     {
                        user: "0001",
-                       creationDate: "",
+                       creationDate: new Date().toJSON(),
                        modificationDate: "",
                        description: newComment.text,
                        type: newComment.type
