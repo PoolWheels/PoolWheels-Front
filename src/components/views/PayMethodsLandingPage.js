@@ -9,9 +9,10 @@ import { useNavigate } from 'react-router-dom';
 function PayMethodsLandingPage() {
     const [PayMethods, setPayMethods] = useState([]);
     const [inLPage, setInLPage] = useState({ inHome: false });
-	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4Mzc1MjgsImV4cCI6MTY2Njg0MTEyOH0.d9IperCDUXkr4DLS_isxK6Mpt4KX9fINcVjTyVtruVU" });
+    const [deleted, setDeleted]= useState({deleted:false})
+	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4NDMwMTMsImV4cCI6MTY2Njg0NjYxM30.v-9hHQ0HVu5VryctZCZhDZ__KCiV_rv7lCSfPSaB6ok" });
     useEffect(() => {
-    	if (!(inLPage.inHome)) {
+    	if (!(inLPage.inHome) || (deleted.deleted)) {
 			try {
 				const idUser = '634b051b464bb818bb2e611f'
 				const requestOptionsToInfo = {
@@ -37,7 +38,35 @@ function PayMethodsLandingPage() {
 				console.log(error)
 			} 
 		}
-	}, [inLPage,PayMethods,token]);
+	}, [inLPage,deleted,PayMethods,token]);
+
+    const cancelpaymethod = (idpaymethods)=>{
+        try {
+            const idUser = '634b051b464bb818bb2e611f'
+            const requestOptionsToInfo = {
+                method: 'DELETE',
+                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + token.token}
+            }
+            
+            const urlTrips = 'http://localhost:8080/api/v1/paymethod/' + idpaymethods
+
+            const asyncGetpaymethuser = async () => {
+                try {
+                    const response = await fetch(urlTrips, requestOptionsToInfo);
+                    const data = await response.json().then(value => {
+                        setDeleted({deleted:value});
+                        
+                    });
+                    return data;
+                } catch(error) {
+                        console.log(error)
+                } 
+            }
+            asyncGetpaymethuser();
+        }catch(error) {
+            console.log(error)
+        } 
+    }
   
     return (
       <div>
@@ -52,11 +81,13 @@ function PayMethodsLandingPage() {
           {PayMethods.map((Paymeths) => (
                 <Grid item xs="auto" wrap="nowrap" container key={Paymeths.id}>
                     <PayMethodS
-                        owner={Paymeths.id}
+                        id ={Paymeths.id}
+                        owner={Paymeths.owner}
                         type={Paymeths.type}
                         number={Paymeths.number}
                         bank ={Paymeths.bank}
                         expirationDate={Paymeths.expirationDate}
+                        func={cancelpaymethod}
                         
                 ></PayMethodS>
             </Grid>

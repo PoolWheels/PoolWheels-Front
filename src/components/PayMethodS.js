@@ -24,15 +24,14 @@ function PayMethodS(props) {
 				<Typography className="number"> Numero de tarjeta: {props.number}</Typography>
 				<Typography className="bank"> Banco: {props.bank}</Typography>
                 <Typography className="expirationDate"> Fecha de expiracion: {props.expirationDate}</Typography>
-				{formatStops(props.stops).map((stop,index) => <p className="stop" key={index}>{stop[0] + ": " +stop[1]}</p>)}
 				<div className= 'divBoton'>
-					<Button  className="boton" 
+					<Button  
+                        className="boton" 
                         align = 'center'
 						type = "submit"
-						onClick = { e =>
-							{console.log("HOLA HACIENDO LA RESERVA...")	}
-						}
-						content = 'Eliminar'
+                        content = 'Eliminar'
+						onClick = {e => props.func(props.id)}
+						
 					></Button>
 				</div>
 			</CardContent>
