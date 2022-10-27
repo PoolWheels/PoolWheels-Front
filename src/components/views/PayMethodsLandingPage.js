@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState} from "react";
 import { Grid } from "@mui/material";
 import Button from '../Button.js';
 import PayMethodS from "../PayMethodS.js"
@@ -12,6 +12,8 @@ function PayMethodsLandingPage() {
     const [inLPage, setInLPage] = useState({ inHome: false });
     const [deleted, setDeleted]= useState({deleted:false});
     const auth = useAuth();
+    const navigate = useNavigate();
+    const [submit, setSubmit] = useState({submit : false});
 	
     useEffect(() => {
     	if (!(inLPage.inHome) || (deleted.deleted)) {
@@ -21,7 +23,6 @@ function PayMethodsLandingPage() {
 					method: 'GET',
 					headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + auth.token}
 				}
-				console.log(auth.token)
 				const urlTrips = 'http://localhost:8080/api/v1/paymethod/Paymeths/' + idUser
 				const asyncGetpaymethuser = async () => {
 					try {
@@ -44,7 +45,6 @@ function PayMethodsLandingPage() {
 
     const cancelpaymethod = (idpaymethods)=>{
         try {
-            console.log(idpaymethods)
             const requestOptionsToInfo = {
                 method: 'DELETE',
                 headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + auth.token}
@@ -52,7 +52,6 @@ function PayMethodsLandingPage() {
             
             const urlTrips = 'http://localhost:8080/api/v1/paymethod/' + idpaymethods
 
-            console.log(urlTrips)
 
             const asyncGetpaymethuser = async () => {
                 try {
@@ -71,6 +70,22 @@ function PayMethodsLandingPage() {
             console.log(error)
         } 
     }
+
+    const redirect = () => {
+        navigate("/profile/paymethods/newpaymethodspage");
+    }
+
+    useEffect(() =>{
+        try {
+            console.log("entro a donde quiero")
+            if (submit.submit){ 
+                redirect()
+            }
+        } catch(e){
+            console.log(e);
+        }
+
+    },[submit]);
   
     return (
       <div>
@@ -100,8 +115,13 @@ function PayMethodsLandingPage() {
             
                 
         </Grid>
-        <Button 
-        id = "newpaymeth" content = "Add Payment method" type = "submit" ></Button>
+        <Button
+            id = "newpaymeth"
+            content = "Add Payment method" 
+            type = "submit" 
+            onClick={ () => {
+            setSubmit({submit : true})}} ></Button>
+        
       </div>
     );
   }

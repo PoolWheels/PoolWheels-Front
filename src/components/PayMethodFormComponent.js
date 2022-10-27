@@ -7,14 +7,6 @@ import "../styles/Paymethods.scss";
 import Button from './Button.js';
 
 
-const initialFvalues = {
-    Type: '',
-    owner: '',
-    number:'',
-    bank: '',
-    expirationDate: new Date()
-}
-
 
 
 export default function Paymethodform(){
@@ -42,9 +34,9 @@ export default function Paymethodform(){
                                 name = "paymethodtype"
                                 value = {values.type}
                                 onChange = {handleInputChange}>
-                                    <FormControlLabel value = "Credit" control = {<Radio />} label = "Bank Account" />
-                                    <FormControlLabel value = "Debit" control = {<Radio />} label = "Nequi" />
-                                    <FormControlLabel value = "VirtualWallet" control = {<Radio />} label = "DaviPlata" />
+                                    <FormControlLabel value = "Credit" control = {<Radio />} label = "Credit" />
+                                    <FormControlLabel value = "Debit" control = {<Radio />} label = "Debit" />
+                                    <FormControlLabel value = "VirtualWallet" control = {<Radio />} label = "VirtualWallet" />
                                 </RadioGroup>
                         </FormControl>
                         <br></br>
