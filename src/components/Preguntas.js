@@ -1,12 +1,12 @@
 import '../styles/faq.scss'
 import { useAuth } from '../contexts/Auth';
 import React, { useEffect } from 'react'
-import testComments from './testComments';
-import Button from '@mui/material/Button';
+import { Button,  TextField, MenuItem, Select, OutlinedInput, InputLabel } from '@mui/material';
 
 export default function Preguntas(){
 
     const auth = useAuth();
+    const [post, setPost] = React.useState(false);
     const [comments, setComments] = React.useState([]);
     const [newComment, setNewComment] = React.useState({
         text: "",
@@ -15,7 +15,7 @@ export default function Preguntas(){
 
     useEffect(()=>{
         getComments();
-    }, []);
+    }, [post]);
 
     async function getComments(){
         try{
@@ -51,7 +51,7 @@ export default function Preguntas(){
                        type: newComment.type
                     }
                 )});
-            var data = await response.json();
+            setPost(prev => !prev);
         }catch(e){
             console.log(e.message);
         }
@@ -90,33 +90,38 @@ export default function Preguntas(){
             <hr />
             <div className='form-container'>
                 <form onSubmit={handleSubmit}>
-                    <textarea 
-                        value={newComment.text}
-                        placeholder="Comments"
-                        name="text"
+                    <TextField
                         id="comment"
-                        rows="4" 
-                        cols="80"
+                        name="text"
+                        label="Comentario"
+                        multiline
+                        rows={4}
+                        cols={80}
+                        value={newComment.text}
+                        variant="filled"
                         onChange={handleChange}
                     />
                     <br/>
-                    <select 
-                        id="type"
+                    <br/>
+                    <InputLabel id="select-label">Selecciona un tipo</InputLabel>
+                    <Select
+                        labelId="select-label"
+                        label="Selecciona un tipo"
+                        id="select"
                         value={newComment.type}
                         onChange={handleChange}
                         name="type"
                     >
-                        <option value="">-- Choose --</option>
-                        <option value="SUGGESTION">Suggestion</option>
-                        <option value="COMPLAINT">Complaint</option>
-                    </select>
+                        <MenuItem value="SUGGESTION">Sugerencia</MenuItem>
+                        <MenuItem value="COMPLAINT">Queja</MenuItem>
+                    </Select>
                     <br/>
                     <br/>
                     <Button
                         variant="contained"
                         type="submit"
                     >
-                        Send
+                        Enviar
                     </Button>
                 </form>
             </div>

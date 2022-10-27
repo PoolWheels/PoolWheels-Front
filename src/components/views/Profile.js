@@ -9,12 +9,19 @@ export default function Profile(){
     const navigate = useNavigate();
     const auth = useAuth();
     const [profileData, setProfileData] = React.useState({});
+    const [redirect, setRedirect] = React.useState(false);
 
     useEffect(()=>{
-        getComments();
+        getProfile();
     }, []);
 
-    async function getComments(){
+    useEffect(()=>{
+        if(redirect){
+            navigate('/profile/paymethods');
+        }
+    }, [submit]);
+
+    async function getProfile(){
         try{
             var response = await fetch('http://localhost:8080/api/v1/user/driverusers/634b0439a2992f7d8e9f1046', {
                 method: 'GET',
@@ -24,7 +31,6 @@ export default function Profile(){
                     'Authorization' : 'Bearer ' + auth.token
                 }});
             var data = await response.json();
-            console.log(data)
             setProfileData(data);
         }catch(e){
             console.log(e.message);
@@ -68,7 +74,7 @@ export default function Profile(){
                         size="small"
                         variant="contained"
                         onClick={() => {
-                            navigate('/profile/paymethods');
+                            setRedirect(prev => !prev);
                         }}
                     >
                         Métodos de pago
