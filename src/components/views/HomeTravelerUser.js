@@ -2,6 +2,8 @@ import {React, useState,useEffect} from 'react'
 import "../../styles/HomeTravelerUser.scss";
 import { Grid } from "@mui/material";
 import TripTraveler from "../TripUserTraveler"
+//Context 
+//import { useAuth } from "../../contexts/Auth";
 
 function HomeTravelerUser () {
 	const [inHome, setInHome] = useState({ inHome: false });
@@ -10,8 +12,8 @@ function HomeTravelerUser () {
     const [trips, setTrips] = useState([]);
 	const [token, setToken] = useState({
     token:
-      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4ODEwNzEsImV4cCI6MTY2Njg4NDY3MX0.q__P0-dLbqJlcAkwM99ySousdeh8xaylaJ6EAjETwbc",
-  });
+      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4ODcxNTAsImV4cCI6MTY2Njg5MDc1MH0.WPLMzCG-d-Xmcz9wBbFlygrI-dFHCfKi0IaanJhTyiQ",
+  	});
     useEffect(() => {
     	if (!(inHome.inHome) || (change.change)) {
 			try {	

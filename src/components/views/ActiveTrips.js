@@ -8,7 +8,10 @@ function ActiveTrips () {
     const [trips, setTrips] = useState([]);
 	const [res, setResponse] = useState('');
 	const [change, setChange] = useState({ change: false });
-	const [token, setToken] = useState({token:'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4ODEwNzEsImV4cCI6MTY2Njg4NDY3MX0.q__P0-dLbqJlcAkwM99ySousdeh8xaylaJ6EAjETwbc'});
+	const [token, setToken] = useState({
+    token:
+      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4ODcxNTAsImV4cCI6MTY2Njg5MDc1MH0.WPLMzCG-d-Xmcz9wBbFlygrI-dFHCfKi0IaanJhTyiQ",
+  });
     useEffect(() => {
     	if (!(inActive.inActive) || (change.change)) {		
 			try {
