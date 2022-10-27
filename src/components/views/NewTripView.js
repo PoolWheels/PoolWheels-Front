@@ -1,7 +1,7 @@
 import { Autocomplete, FormLabel, TextField } from "@mui/material";
 import { React, useEffect, useState, useContext } from "react";
-import {AdapterDayjs, LocalizationProvider, StaticTimePicker } from "@mui/x-date-pickers";
-//import dayjs from 'dayjs';
+import { AdapterDayjs, LocalizationProvider, StaticTimePicker } from "@mui/x-date-pickers";
+import dayjs from 'dayjs';
 
 function NewTripView() {
   const url = 'http://localhost:8080/api/v1/trip';
@@ -12,7 +12,7 @@ function NewTripView() {
     { label: '$7000', id: 3 },
   ];
 
-  //const [value, setValue] = React.useState(dayjs('2022-04-07'));
+  const [value, setValue] = React.useState(dayjs('2022-04-07'));
 
 
   return (
@@ -36,10 +36,10 @@ function NewTripView() {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
       <StaticTimePicker
         displayStaticWrapperAs="mobile"
-        //value={value}
-        // onChange={(newValue) => {
-        //   setValue(newValue);
-        // }}
+        value={value}
+         onChange={(newValue) => {
+           setValue(newValue);
+         }}
         renderInput={(params) => <TextField {...params} />}
       />
     </LocalizationProvider>
