@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import Button from './Button';
+import { ScrollRestoration } from "react-router-dom";
 
 function PayMethodS(props) {
 
 	const [submit, setSubmit] = useState({submit:false});
+	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4Mzc1MjgsImV4cCI6MTY2Njg0MTEyOH0.d9IperCDUXkr4DLS_isxK6Mpt4KX9fINcVjTyVtruVU" });
+
 	const formatStops= (stops) =>{
 		const arrayStops = []
 		for (let key in stops){

@@ -1,22 +1,26 @@
 import React, {useState, useEffect} from 'react';
-import { Grid, TextField, Paper, Box, Checkbox, Autocomplete, Stack, RadioGroup, Radio, FormControl, FormLabel, FormControlLabel} from "@mui/material";
+import { Grid, TextField, Paper,  Autocomplete, Stack, RadioGroup, Radio, FormControl, FormLabel, FormControlLabel} from "@mui/material";
+import { LocalizationProvider,  DatePicker } from '@mui/x-date-pickers'
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
+import dayjs, { Dayjs } from 'dayjs';
 import "../styles/Paymethods.scss";
 import Button from './Button.js';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/Auth';
-import { type } from '@testing-library/user-event/dist/type';
 
+
+const initialFvalues = {
+    Type: '',
+    owner: '',
+    number:'',
+    bank: '',
+    expirationDate: new Date()
+}
 
 
 
 export default function Paymethodform(){
 
     const {values, setvalues}= useState();
-    const [submit, setSubmit] = useState({submit : false});
-    const auth = useAuth();
-    const navigate = useNavigate();
     const banks = ['Bancolombia', 'Davivienda', 'Itau', 'Colpatria', 'Falabella', 'Banco de Bogota', 'Av Villas', 'Nequi', 'Daviplata'];
-    
     const handleInputChange  = e=>{
         const {name, value} = e.target
         setvalues({
@@ -81,74 +85,88 @@ export default function Paymethodform(){
         <div >
             <Paper>
                 <h1>Inscripción Tarjeta Nueva</h1>
-                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                    <p>Dueño del producto</p>
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="owner"
-                        label="Nombre completo"
-                        name="owner"
-                        autoComplete="owner"
-                        autoFocus
-                    />
-                    <p>Ingresar numero de tarjeta:</p>
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="number"
-                        label="Numero de tarjeta(numero de telefono en caso de Nequi o daviplata)"
-                        type="cardnumber"
-                        id="number"
-                        autoComplete="current-number"
-                    />
-                    <p>ingresar el banco del producto(Nequi o Daviplata o banco tradicional)</p>
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="bank"
-                        label="Banco del metodo de pago"
-                        type="bank"
-                        id="bank"
-                        autoComplete="current-bank"
-                    />
-                    <p>ingresar fecha de expiracion</p>
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="expirationDate"
-                        label="fecha de expiracion (mm/yy)"
-                        type="expirationDate"
-                        id="expirationDate"
-                        autoComplete="current-expirationDate"
-                    />
-                    <p>Tipo de metodo de pago</p>
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="type"
-                        label="ingrese tipo de pago (Debit, Credit, VirtualWallet)"
-                        type="type"
-                        id="type"
-                        autoComplete="current-type"
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                        content = 'Add++'
-                    >
-                        
-                    </Button>
-            </Box>
+                <form ClassName = 'paymethodform'>
+                    <Grid item xs = {6}>
+                    <FormControl>
+                            <FormLabel>Tipo de metodo de pago</FormLabel>
+                                <RadioGroup
+                                row
+                                name = "paymethodtype"
+                                value = {values.type}
+                                onChange = {handleInputChange}>
+                                    <FormControlLabel value = "Credit" control = {<Radio />} label = "Bank Account" />
+                                    <FormControlLabel value = "Debit" control = {<Radio />} label = "Nequi" />
+                                    <FormControlLabel value = "VirtualWallet" control = {<Radio />} label = "DaviPlata" />
+                                </RadioGroup>
+                        </FormControl>
+                        <br></br>
+                        <br></br>
+                        <FormLabel>Selecciona tu Banco</FormLabel>
+                        <br></br>
+                        <br></br>
+                        <Stack spacing = {2}>
+                            <Autocomplete
+                            disablePortal
+                            sx={{width:300}}
+                            options = {banks} 
+                            renderInput={(params) => <TextField {...params}/>} 
+                            labels = 'Bancos' 
+                            name = "Numbercard"
+                            value = {values.number}
+                            >
+                            </Autocomplete>
+                        </Stack>
+
+                        <br></br>
+                        <br></br>
+                        <FormLabel>Nombre del dueño</FormLabel>
+                        <br></br>
+                        <br></br>
+                        <TextField
+                        variant = "outlined"
+                        label = "Nombre completo"
+                        name = "Owner full name"
+                        value = {values.owner}
+                        onChange = {handleInputChange}
+                        />
+                        <br></br>
+                        <br></br>
+                        <FormLabel>numero de metodo de pago</FormLabel>
+                        <br></br>
+                        <br></br>
+                        <TextField
+                        variant = "outlined"
+                        label = "Numero"
+                        name = "Numbercard"
+                        value = {values.number}
+                        onChange = {handleInputChange}
+                        />
+                        <br></br>
+                        <br></br>
+                        <FormLabel>fecha de expiracion</FormLabel>
+                        <br></br>
+                        <br></br>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
+                            views={['year', 'month']}
+                            label="Mes y año"
+                            minDate={dayjs('2012-03-01')}
+                            maxDate={dayjs('2023-06-01')}
+                            value={values.expirationDate}
+                            onChange={(newValue) => {
+                                setvalues(newValue);
+                              }}
+                            renderInput={(params) => <TextField {...params} helperText={null} />}
+                            />
+                        </LocalizationProvider>
+                    
+                    </Grid>
+                </form>
+                <br></br>
+                <br></br>
             </Paper>
-            
+            <Button 
+            id = "newpaymethcreate" content = "Add ++" type = "submit" ></Button>
         </div>
         
     )
