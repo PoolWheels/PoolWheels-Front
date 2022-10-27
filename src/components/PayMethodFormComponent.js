@@ -99,7 +99,7 @@ export default function Paymethodform(){
                         required
                         fullWidth
                         name="number"
-                        label="Numero de tarjeta"
+                        label="Numero de tarjeta(numero de telefono en caso de Nequi o daviplata)"
                         type="cardnumber"
                         id="number"
                         autoComplete="current-number"
@@ -110,7 +110,7 @@ export default function Paymethodform(){
                         required
                         fullWidth
                         name="bank"
-                        label="Banco"
+                        label="Banco del metodo de pago"
                         type="bank"
                         id="bank"
                         autoComplete="current-bank"
@@ -132,7 +132,7 @@ export default function Paymethodform(){
                         required
                         fullWidth
                         name="type"
-                        label="ingrese tipo de pago (Dabit, Credit, VirtualWallet)"
+                        label="ingrese tipo de pago (Debit, Credit, VirtualWallet)"
                         type="type"
                         id="type"
                         autoComplete="current-type"
