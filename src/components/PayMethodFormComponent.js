@@ -1,8 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { Grid, TextField, Paper, Box, Checkbox, Autocomplete, Stack, RadioGroup, Radio, FormControl, FormLabel, FormControlLabel} from "@mui/material";
-import { LocalizationProvider,  DatePicker } from '@mui/x-date-pickers'
-import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
-import dayjs, { Dayjs } from 'dayjs';
 import "../styles/Paymethods.scss";
 import Button from './Button.js';
 import { useNavigate } from 'react-router-dom';
@@ -40,19 +37,20 @@ export default function Paymethodform(){
         try {
             const idUser = '634b051b464bb818bb2e611f'
             console.log(data)
+            const bodies = JSON.stringify({
+                "owner":idUser, 
+                'number':data.get('number'), 
+                'bank':data.get('bank'), 
+                'expirationDate':data.get('expirationDate'), 
+                'type':data.get('type')
+            })
             const requestOptionsToInfo = {
                 method: 'POST',
                 headers: 
                 {'Content-Type': 'application/json', 
                 'Access-Control-Allow-Origin': '*', 
                 'Authorization': 'Bearer ' + auth.token}, 
-                body: {
-                    "owner":idUser, 
-                    'number':data.get('number'), 
-                    'bank':data.get('bank'), 
-                    'expirationDate':data.get('expirationDate'), 
-                    'type':data.get('type')
-                }
+                body: bodies
                 }
             
             
