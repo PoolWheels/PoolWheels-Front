@@ -1,28 +1,25 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Grid } from "@mui/material";
 import Button from '../Button.js';
 import PayMethodS from "../PayMethodS.js"
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../contexts/Auth';
 
 
 
 function PayMethodsLandingPage() {
     const [PayMethods, setPayMethods] = useState([]);
     const [inLPage, setInLPage] = useState({ inHome: false });
-    const [deleted, setDeleted]= useState({deleted:false});
-    const auth = useAuth();
-    const navigate = useNavigate();
-    const [submit, setSubmit] = useState({submit : false});
-	
+    const [deleted, setDeleted]= useState({deleted:false})
+	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4NDMwMTMsImV4cCI6MTY2Njg0NjYxM30.v-9hHQ0HVu5VryctZCZhDZ__KCiV_rv7lCSfPSaB6ok" });
     useEffect(() => {
     	if (!(inLPage.inHome) || (deleted.deleted)) {
 			try {
 				const idUser = '634b051b464bb818bb2e611f'
 				const requestOptionsToInfo = {
 					method: 'GET',
-					headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + auth.token}
+					headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + token.token}
 				}
+				
 				const urlTrips = 'http://localhost:8080/api/v1/paymethod/Paymeths/' + idUser
 				const asyncGetpaymethuser = async () => {
 					try {
@@ -41,17 +38,17 @@ function PayMethodsLandingPage() {
 				console.log(error)
 			} 
 		}
-	}, [inLPage,deleted,PayMethods,auth.token]);
+	}, [inLPage,deleted,PayMethods,token]);
 
     const cancelpaymethod = (idpaymethods)=>{
         try {
+            const idUser = '634b051b464bb818bb2e611f'
             const requestOptionsToInfo = {
                 method: 'DELETE',
-                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + auth.token}
+                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + token.token}
             }
             
             const urlTrips = 'http://localhost:8080/api/v1/paymethod/' + idpaymethods
-
 
             const asyncGetpaymethuser = async () => {
                 try {
@@ -70,21 +67,6 @@ function PayMethodsLandingPage() {
             console.log(error)
         } 
     }
-
-    const redirect = () => {
-        navigate("/profile/paymethods/newpaymethodspage");
-    }
-
-    useEffect(() =>{
-        try {
-            if (submit.submit){ 
-                redirect()
-            }
-        } catch(e){
-            console.log(e);
-        }
-
-    },[submit]);
   
     return (
       <div>
@@ -114,13 +96,8 @@ function PayMethodsLandingPage() {
             
                 
         </Grid>
-        <Button
-            id = "newpaymeth"
-            content = "Add Payment method" 
-            type = "submit" 
-            onClick={ () => {
-            setSubmit({submit : true})}} ></Button>
-        
+        <Button 
+        id = "newpaymeth" content = "Add Payment method" type = "submit" ></Button>
       </div>
     );
   }
