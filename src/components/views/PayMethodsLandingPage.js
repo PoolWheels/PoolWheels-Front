@@ -18,7 +18,7 @@ function PayMethodsLandingPage() {
     useEffect(() => {
     	if (!(inLPage.inHome) || (deleted.deleted)) {
 			try {
-				const idUser = auth.userid
+				const idUser = auth.userId;
 				const requestOptionsToInfo = {
 					method: 'GET',
 					headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + auth.token}

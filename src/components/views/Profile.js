@@ -8,7 +8,7 @@ import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@
 export default function Profile(){
     const navigate = useNavigate();
     const auth = useAuth();
-    const idUser = auth.userid
+    const idUser = auth.userId;
     const [profileData, setProfileData] = React.useState({});
     const [redirect, setRedirect] = React.useState(false);
 
