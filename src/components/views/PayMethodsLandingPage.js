@@ -77,7 +77,6 @@ function PayMethodsLandingPage() {
 
     useEffect(() =>{
         try {
-            console.log("entro a donde quiero")
             if (submit.submit){ 
                 redirect()
             }
