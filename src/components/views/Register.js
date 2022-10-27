@@ -10,12 +10,12 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
 import { useAuth } from '../../contexts/Auth';
 import { useNavigate } from 'react-router-dom';
-import '../../styles/base.scss'
+import '../../styles/base.scss';
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 
-export default function Login() {
+export default function Register() {
 
     const auth = useAuth();
     const navigate = useNavigate();
@@ -47,9 +47,29 @@ export default function Login() {
             <Avatar sx={{ m: 1, bgcolor: "rgb(154,25,205)" }}>
             </Avatar>
             <Typography component="h1" variant="h5">
-                Login
+                Registrarse
             </Typography>
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="name"
+                    label="Nombre"
+                    name="name"
+                    autoFocus
+                />
+            <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="lastname"
+                    label="Apellido"
+                    name="lastname"
+                    autoFocus
+                />
+                
+                
                 <TextField
                     margin="normal"
                     required
@@ -60,6 +80,7 @@ export default function Login() {
                     autoComplete="email"
                     autoFocus
                 />
+                
                 <TextField
                     margin="normal"
                     required
@@ -70,26 +91,49 @@ export default function Login() {
                     id="password"
                     autoComplete="current-password"
                 />
-                <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="Recordarme"
+            <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="university"
+                    label="universidad"
+                    name="university"
+                    autoFocus
                 />
+            <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="document"
+                    label="Número de Documento de Identidad"
+                    name="document"
+                    autoFocus
+                />
+            <TextField
+
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="phone"
+                    label="Número de Celular"
+                    name="phone"
+                    autoFocus
+                />
+                <AddToPhotosIcon
+                type="submit"
+                fullWidth
+                id="photo"
+                
+                />
+
                 <Button
                     type="submit"
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                 >
-                    Login
+                    Registrarse
                 </Button>
-                <Grid container>
-                    <Grid item xs></Grid>
-                    <Grid item>
-                    <Link href="/register" variant="body2">
-                        {"¿Aún no tienes una cuenta? Regístrate"}
-                    </Link>
-                    </Grid>
-                </Grid>
             </Box>
         </Box>
       </Container>
