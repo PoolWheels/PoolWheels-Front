@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import logo from './logo.svg';
 import './App.css';
 import DriverView from './components/views/HomeDriverView';
@@ -25,6 +26,13 @@ function App() {
     // <DriverView />
     <NewTripView />
 
+=======
+import AppRoutes from "./routes/AppRoutes";
+
+function App() {
+  return (
+    <AppRoutes />
+>>>>>>> 8985d89dfb32c989c00ba1044ff054d5ca495a73
   );
 }
 
