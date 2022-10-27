@@ -17,9 +17,9 @@ const Modal =  ({ open,  onClose, driver }) => {
 			<div className='modalRight'>
 				<p className='closeBtn' onClick={onClose} >x</p>
 				<div className='content'>
-				<p>CONDUCTOR</p>
-				<p>NOMBRE:  {driver.name} {driver.lastName}</p>
-				<p>TEL: {driver.phone}</p>
+				<p style={{ fontFamily: "monospace", color: "#07063D", fontSize: "20px"}}>CONDUCTOR</p>
+				<p style={{ fontFamily: "Helvetica", color: "#07063D", fontSize: "15px"}}>NOMBRE:  {driver.name} {driver.lastName}</p>
+				<p>📲 TEL: {driver.phone}</p>
 				</div>
 			</div>
 			</div>

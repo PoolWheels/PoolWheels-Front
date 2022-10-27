@@ -44,9 +44,12 @@ function TripTraveler(props) {
 	return (
     <Card variant="outlined">
       <CardContent className="divgeneral">
-        <div>
-          <button onClick={(e) => getDriver(props.driver)} className="modalButton">
-            CONDUCTOR
+        <div className="divDriver">
+          <button
+            onClick={(e) => getDriver(props.driver)}
+            className="modalButton driverBoton"
+          >
+            🚦 CONDUCTOR
           </button>
           <Modal
             open={openModal}
