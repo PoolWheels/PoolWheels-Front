@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import '../styles/TripUserTraveler.scss'
 import Button from './Button';
-import { ScrollRestoration } from "react-router-dom";
 
 function TripTraveler(props) {
 	const formatStops= (stops) =>{

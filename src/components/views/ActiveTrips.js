@@ -7,9 +7,10 @@ function ActiveTrips () {
 	const [inActive, setInActive] = useState({ inActive: false });
     const [trips, setTrips] = useState([]);
 	const [res, setResponse] = useState('');
-	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4MzM0NzMsImV4cCI6MTY2NjgzNzA3M30.IkhaHEPqO4yiNHCIof2ilKgWspDaZNRS1JSyTOsejm4" });
+	const [change, setChange] = useState({ change: false });
+	const [token, setToken] = useState({ token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzRiMDQzOWEyOTkyZjdkOGU5ZjEwNDYiLCJjbGFpbXMiOiJEUklWRVIiLCJpYXQiOjE2NjY4MzgzODAsImV4cCI6MTY2Njg0MTk4MH0.IJ8K1Vurcn5VnXYCYZj5ignjk080Tf8JLdGATM-BkK8" });
     useEffect(() => {
-    	if (!(inActive.inActive)) {
+    	if (!(inActive.inActive) || (change.change)) {
 			try {
                 // 1. Traer los viajes activos y organizarlos. Cada uno con la función de reservar.
 				// Mostrar lso que tengan puestos disponibles
@@ -35,7 +36,7 @@ function ActiveTrips () {
 				console.log(error)
 			} 
 		}
-	}, [inActive,trips,token]);
+	}, [inActive,trips,token,change]);
 
 	const bookTrip = async (idT) => {
 			const requestOptionsToBook = {
@@ -47,6 +48,7 @@ function ActiveTrips () {
 			const response = await fetch(urlBookReservation, requestOptionsToBook);
 			const data = await response.json().then(value => {
 						setResponse(value);
+						setChange({change:true})
 			});	
 	}
 
