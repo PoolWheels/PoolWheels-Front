@@ -6,6 +6,7 @@ import LandingPage from "../components/views/LandingPage";
 import Login from "../components/views/Login";
 import About from "../components/views/about";
 import Faq from "../components/views/Faq";
+import Profile from "../components/views/Profile";
 
 export default function AppRoutes() {
     return (
@@ -24,7 +25,7 @@ export default function AppRoutes() {
                         {/* <Route path="/userhome" element={<UserHome />} /> */}
                         {/* <Route path="/profile/paymethods" element={<PaymentMethodsLandingPage />} /> */}
                         {/* <Route path="/profile/paymethods/newpaymethodspage" element={<NewPayMethodsLandingPage />} /> */}
-                        {/* <Route path="/profile" element={<Profile />} /> */}
+                        <Route path="/profile" element={<Profile />} />
                         <Route path="/frequentquestions" element={<Faq />} />
                     </Routes>
                 </div>
