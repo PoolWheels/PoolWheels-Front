@@ -1,17 +1,21 @@
 import '../styles/faq.scss'
-//import { useAuth } from '../contexts/Auth';
-import React from 'react'
+import { useAuth } from '../contexts/Auth';
+import React, { useEffect } from 'react'
 import testComments from './testComments';
 import Button from '@mui/material/Button';
 
 export default function Preguntas(){
 
-    //const auth = React.useAuth();
-    const [comments, setComments] = React.useState(testComments);
+    const auth = useAuth();
+    const [comments, setComments] = React.useState([]);
     const [newComment, setNewComment] = React.useState({
         text: "",
         type: ""
     });
+
+    useEffect(()=>{
+        getComments();
+    }, []);
 
     async function getComments(){
         try{
@@ -20,10 +24,9 @@ export default function Preguntas(){
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
-                    'Authorization' : 'Bearer '
+                    'Authorization' : 'Bearer ' + auth.token
                 }});
             var data = await response.json();
-            console.log(data);
             setComments(data);
         }catch(e){
             console.log(e.message);
@@ -37,7 +40,7 @@ export default function Preguntas(){
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
-                    'Authorization' : 'Bearer '
+                    'Authorization' : 'Bearer ' + auth.token
                 },
                 body: JSON.stringify(
                     {
@@ -49,7 +52,6 @@ export default function Preguntas(){
                     }
                 )});
             var data = await response.json();
-            console.log(data);
         }catch(e){
             console.log(e.message);
         }
@@ -65,7 +67,7 @@ export default function Preguntas(){
 
     function handleSubmit(event){
         event.preventDefault();
-
+        postComments();
     }
 
     const mappedComments = comments.map( comment => {
@@ -112,6 +114,7 @@ export default function Preguntas(){
                     <br/>
                     <Button
                         variant="contained"
+                        type="submit"
                     >
                         Send
                     </Button>

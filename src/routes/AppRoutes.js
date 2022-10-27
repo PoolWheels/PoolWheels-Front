@@ -5,9 +5,9 @@ import NavBar from "../components/NavBar";
 import LandingPage from "../components/views/LandingPage";
 import Login from "../components/views/Login";
 import About from "../components/views/about";
+import Faq from "../components/views/Faq";
 
 export default function AppRoutes() {
-
     return (
         <Router>
             <header>
@@ -25,7 +25,7 @@ export default function AppRoutes() {
                         {/* <Route path="/profile/paymethods" element={<PaymentMethodsLandingPage />} /> */}
                         {/* <Route path="/profile/paymethods/newpaymethodspage" element={<NewPayMethodsLandingPage />} /> */}
                         {/* <Route path="/profile" element={<Profile />} /> */}
-                        {/* <Route path="/frequentquestions" element={<FrequentQuestions />} /> */}
+                        <Route path="/frequentquestions" element={<Faq />} />
                     </Routes>
                 </div>
             </main>
