@@ -1,11 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import PayMethodsLandingPage from './components/views/PayMethodsLandingPage';
-import NewPayMethod from './components/views/NewPayMethodPage';
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
-    < NewPayMethod />
+    <AppRoutes />
   );
 }
 
