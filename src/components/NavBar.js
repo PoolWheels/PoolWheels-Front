@@ -14,6 +14,7 @@ export default function NavBar() {
                 <li>
                     <Link to="/userhome">User Home</Link>
                 </li>
+                <li>
                     <Link to="/profile">Profile</Link>
                 </li>
                 <li>

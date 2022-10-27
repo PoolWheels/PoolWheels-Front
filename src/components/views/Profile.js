@@ -19,7 +19,7 @@ export default function Profile(){
         if(redirect){
             navigate('/profile/paymethods');
         }
-    }, [submit]);
+    }, [redirect]);
 
     async function getProfile(){
         try{
