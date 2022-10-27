@@ -35,7 +35,7 @@ export default function Paymethodform(){
         
 
         try {
-            const idUser = '634b051b464bb818bb2e611f'
+            const idUser = auth.userid
             console.log(data)
             const bodies = JSON.stringify({
                 "owner":idUser, 
