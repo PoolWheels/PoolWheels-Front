@@ -29,6 +29,58 @@ export default function Paymethodform(){
         })
     }
 
+    const redirect = () => {
+        navigate("/profile/paymethods");
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        
+
+        try {
+            const idUser = auth.userId
+            console.log(data)
+            const bodies = JSON.stringify({
+                "owner":idUser, 
+                'number':data.get('number'), 
+                'bank':data.get('bank'), 
+                'expirationDate':data.get('expirationDate'), 
+                'type':data.get('type')
+            })
+            const requestOptionsToInfo = {
+                method: 'POST',
+                headers: 
+                {'Content-Type': 'application/json', 
+                'Access-Control-Allow-Origin': '*', 
+                'Authorization': 'Bearer ' + auth.token}, 
+                body: bodies
+                }
+            
+            
+            const urlTrips = 'http://localhost:8080/api/v1/paymethod/'
+            console.log(requestOptionsToInfo)
+
+
+            const asyncGetpaymethuser = async () => {
+                try {
+                    const response = await fetch(urlTrips, requestOptionsToInfo);
+                    const data = await response.json().then(value => {
+                        console.log(value)
+                    });
+                    return data;
+                } catch(error) {
+                        console.log(error)
+                } 
+            }
+            asyncGetpaymethuser();
+        }catch(error) {
+            console.log(error)
+        } 
+
+        redirect()
+    }
+
     return (
         <div >
             <Paper>
