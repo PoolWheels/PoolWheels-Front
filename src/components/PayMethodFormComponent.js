@@ -42,8 +42,19 @@ export default function Paymethodform(){
             console.log(data)
             const requestOptionsToInfo = {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': 'Bearer ' + auth.token, body:{"owner":idUser, 'number':data.get('number'), 'bank':data.get('bank'), 'expirationDate':data.get('expirationDate'), 'type':data.get('type')}}
-            }
+                headers: 
+                {'Content-Type': 'application/json', 
+                'Access-Control-Allow-Origin': '*', 
+                'Authorization': 'Bearer ' + auth.token}, 
+                body: {
+                    "owner":idUser, 
+                    'number':data.get('number'), 
+                    'bank':data.get('bank'), 
+                    'expirationDate':data.get('expirationDate'), 
+                    'type':data.get('type')
+                }
+                }
+            
             
             const urlTrips = 'http://localhost:8080/api/v1/paymethod/'
             console.log(requestOptionsToInfo)
