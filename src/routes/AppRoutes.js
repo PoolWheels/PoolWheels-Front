@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar";
 import LandingPage from "../components/views/LandingPage";
 import Login from "../components/views/Login";
 import About from "../components/views/about";
+import Register from "../components/views/Register";
 
 export default function AppRoutes() {
 
@@ -17,10 +18,11 @@ export default function AppRoutes() {
             <main>
                 <div className='container'>
                     <Routes>
+                        <Route path="/" element={<LandingPage />} />
                         <Route path="/landingpage" element={<LandingPage />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/about" element={<About />} />
-                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/register" element={<Register />} />
                         {/* <Route path="/userhome" element={<UserHome />} /> */}
                         {/* <Route path="/profile/paymethods" element={<PaymentMethodsLandingPage />} /> */}
                         {/* <Route path="/profile/paymethods/newpaymethodspage" element={<NewPayMethodsLandingPage />} /> */}
