@@ -28,6 +28,15 @@ export default function About() {
       </Box>
     );
 
+=======
+import { Button, CardActionArea, CardActions } from '@mui/material';
+import card1img from '../../images/card1.jpg';
+import card2img from '../../images/card2.png';
+import '../../styles/about.scss';
+
+export default function About() {
+
+
     return (
         
         <div>
@@ -57,6 +66,7 @@ export default function About() {
                 </CardActions>
             </Card>
 
+
             <Card id="card2" sx={{ minWidth: 275 }} >
                 <CardContent>
                     <Typography variant="h5" component="div">
@@ -77,5 +87,7 @@ export default function About() {
             </Card>
         </div>
     )
+
+    );
 
 }
