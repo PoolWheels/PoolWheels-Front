@@ -9,11 +9,13 @@ import '../../styles/About.scss';
 import { useNavigate } from 'react-router-dom';
 import ladingpageimg from '../../images/ladingpage.png';
 import logoimg from '../../images/logo.png';
+
+
 export default function About() {
 
     const navigate = useNavigate();
     
-    const changePage = (event) => {
+    const changePage = (event) => {33
     
         if(event.target.name==="contact"){
             window.location = "/Contact";
