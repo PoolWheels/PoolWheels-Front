@@ -10,7 +10,9 @@ import card2img from '../../images/card2.png';
 import '../../styles/about.scss';
 
 export default function About() {
+
     return (
+
         <div >
             <h1>PoolWheels</h1>
                 <Card sx={{ maxWidth: 345 }}>
@@ -26,7 +28,7 @@ export default function About() {
                            Genera ganancias
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                        Genera ganancias por viajes realizados. Organiza tus horarios y dispone de tu tiempo.
+                        Genera ganancias por viajes realizados.Organiza tus horarios y dispone de tu tiempo.
                         </Typography>
                         </CardContent>
                     </CardActionArea>
@@ -52,8 +54,11 @@ export default function About() {
                     </Card>
 
                     <h1>Contactanos</h1>
-                    <p>uniwheelscompany@gmail.com</p>      
+                    <p>uniwheelscompany@gmail.com</p>
+                    
         </div>
+        
+
+
     );
 }
-
