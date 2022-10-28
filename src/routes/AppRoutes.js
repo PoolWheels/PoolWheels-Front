@@ -10,6 +10,8 @@ import Profile from "../components/views/Profile";
 import PayMethodsLandingPage from "../components/views/PayMethodsLandingPage";
 import NewPayMethodsPage from "../components/views/NewPayMethodPage";
 import RequireAuth from "../utils/RequireAuth";
+import HomeTravelerUser from "../components/views/HomeTravelerUser";
+import ActiveTrips from "../components/views/ActiveTrips";
 
 export default function AppRoutes() {
     return (
@@ -25,11 +27,12 @@ export default function AppRoutes() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/" element={<LandingPage />} />
-                        {/* <Route path="/userhome" element={<UserHome />} /> */}
                         <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
                         <Route path="/frequentquestions" element={<Faq />} />
                         <Route path="/profile/paymethods" element={<RequireAuth><PayMethodsLandingPage /></RequireAuth>} /> 
                         <Route path="/profile/paymethods/newpaymethodspage" element={<NewPayMethodsPage />} /> 
+                        <Route path="/userhome" element={<RequireAuth><HomeTravelerUser /></RequireAuth>} />
+                        <Route path="/activetrips" element={<RequireAuth><ActiveTrips /></RequireAuth>} />
                     </Routes>
                 </div>
             </main>
