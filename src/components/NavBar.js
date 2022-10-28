@@ -21,9 +21,6 @@ export default function NavBar() {
                 <li>
                     <Link to="/about">Acerca de</Link>
                 </li>
-                <li>
-                    <Link to="/frequentquestions">Preguntas frecuentes</Link>
-                </li>
                 {!auth.userEmail && (
                     <li>
                         <Link to="/login">Login</Link>

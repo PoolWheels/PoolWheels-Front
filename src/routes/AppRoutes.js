@@ -14,6 +14,7 @@ import HomeTravelerUser from "../components/views/HomeTravelerUser";
 import ActiveTrips from "../components/views/ActiveTrips";
 
 export default function AppRoutes() {
+
     return (
         <Router>
             <header>
