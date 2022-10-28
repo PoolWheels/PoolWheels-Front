@@ -1,0 +1,66 @@
+@use "./base.scss";
+
+.numTrip{
+    display: flex;
+    align-items: center !important;
+    justify-content: center;
+    font-family: monospace !important;
+    color:base.$purple;
+    letter-spacing: 3px !important;
+    font-weight: bold !important;
+    font-size: 20px !important;
+}
+
+.addrInit, .addrFin, .seats{
+    //font-family: 'base.$main-fonts';
+    font-family: 'base.$main-fonts' !important;
+    font-weight: bold !important;
+    
+
+}
+
+.initTime{
+    font-family: 'base.$main-fonts';
+    color:base.$dark-blue;
+    letter-spacing: 3px !important;
+    font-weight: bold !important;
+}
+
+.date, .stop{
+    font-family: monospace;
+    font-size: large;
+    color: base.$purple;
+    font-weight: bold !important;
+}
+
+.divBoton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative !important;
+    font-family: 'base.$main-fonts';
+
+    .boton {
+        position: absolute !important;
+        bottom: 10px !important;
+    }
+}
+
+
+.driverBoton {
+    font-family: monospace !important;
+    font-size: 18px;
+    border: 2px solid #1F3C88;
+    border-radius: 6px;
+    background-color: #ffff;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.driverBoton:hover {
+    background-color: base.$dark-blue;
+    color: rgb(255, 255, 255);
+    border: 2px solid #697aa8;
+    border-color: base.$light-blue;
+}
+

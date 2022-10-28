@@ -5,6 +5,8 @@ import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs, { Dayjs } from 'dayjs';
 import "../styles/Paymethods.scss";
 import Button from './Button.js';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/Auth';
 
 
 const initialFvalues = {
@@ -18,7 +20,8 @@ const initialFvalues = {
 
 
 export default function Paymethodform(){
-
+    const navigate=useNavigate();
+    const auth=useAuth();
     const {values, setvalues}= useState();
     const banks = ['Bancolombia', 'Davivienda', 'Itau', 'Colpatria', 'Falabella', 'Banco de Bogota', 'Av Villas', 'Nequi', 'Daviplata'];
     const handleInputChange  = e=>{
