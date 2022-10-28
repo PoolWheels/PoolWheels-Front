@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../contexts/Auth";
 
-export default function RequiereAuth({ children }) {
+export default function RequireAuth({ children }) {
     const auth = useAuth();
     const oneHourInMilis = 60*60*1000;
     const tokenExpirationDate = new Date(auth.tokenExpirationDate);

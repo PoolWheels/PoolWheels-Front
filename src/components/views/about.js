@@ -7,28 +7,10 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import card1img from '../../images/card1.jpg';
 import card2img from '../../images/card2.png';
-import '../../styles/about.css';
-import Avatar from '@mui/material/Avatar';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Dialog from '@mui/material/Dialog';
-import PersonIcon from '@mui/icons-material/Person';
-import AddIcon from '@mui/icons-material/Add';
-import { blue } from '@mui/material/colors';
-import PropTypes from 'prop-types';
-
+import '../../styles/about.scss';
 
 export default function About() {
-
-   
-
-
-
     return (
-
         <div >
             <h1>PoolWheels</h1>
                 <Card sx={{ maxWidth: 345 }}>
@@ -44,7 +26,7 @@ export default function About() {
                            Genera ganancias
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                        Genera ganancias por viajes realizados.Organiza tus horarios y dispone de tu tiempo.
+                        Genera ganancias por viajes realizados. Organiza tus horarios y dispone de tu tiempo.
                         </Typography>
                         </CardContent>
                     </CardActionArea>
@@ -70,12 +52,8 @@ export default function About() {
                     </Card>
 
                     <h1>Contactanos</h1>
-                    <p>uniwheelscompany@gmail.com</p>
-                    
+                    <p>uniwheelscompany@gmail.com</p>      
         </div>
-        
-
-
     );
 }
 
