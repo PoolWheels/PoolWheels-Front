@@ -10,7 +10,8 @@ import { type } from '@testing-library/user-event/dist/type';
 
 
 export default function Paymethodform(){
-
+    const navigate=useNavigate();
+    const auth=useAuth();
     const {values, setvalues}= useState();
     const [submit, setSubmit] = useState({submit : false});
     const auth = useAuth();

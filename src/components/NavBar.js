@@ -20,9 +20,11 @@ export default function NavBar() {
                 </li>
                 <li>
                     <Link to="/about">Acerca de</Link>
+
                 </li>
                 <li>
                     <Link to="/frequentquestions">Preguntas frecuentes</Link>
+
                 </li>
                 {!auth.userEmail && (
                     <li>
