@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import NavBar from "../components/NavBar";
 import LandingPage from "../components/views/LadingPage";
 import Login from "../components/views/Login";
 import About from "../components/views/About";
+import About from "../components/views/about";
 import Faq from "../components/views/Faq";
 import Profile from "../components/views/Profile";
 import PayMethodsLandingPage from "../components/views/PayMethodsLandingPage";
@@ -13,8 +13,8 @@ import RequireAuth from "../utils/RequireAuth";
 import HomeTravelerUser from "../components/views/HomeTravelerUser";
 import ActiveTrips from "../components/views/ActiveTrips";
 import Contact from "../components/views/Contact";
-export default function AppRoutes() {
 
+export default function AppRoutes() {
     return (
         <Router>
             <header>
@@ -27,7 +27,9 @@ export default function AppRoutes() {
                         <Route path="/landingpage" element={<LandingPage />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/about" element={<About />} />
+
                         <Route path="/contact" element={<Contact />} />
+
                         <Route path="/" element={<LandingPage />} />
                         <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
                         <Route path="/frequentquestions" element={<Faq />} />
