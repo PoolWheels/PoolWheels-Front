@@ -10,16 +10,16 @@ export default function NavBar() {
         <nav>
             <ul>
                 <li>
-                    <Link to="/landingpage">Landing Page</Link>
+                    <Link to="/landingpage">Inicio</Link>
                 </li>
                 <li>
-                    <Link to="/userhome">User Home</Link>
+                    <Link to="/userhome">Viajes</Link>
                 </li>
                 <li>
-                    <Link to="/profile">Profile</Link>
+                    <Link to="/profile">Perfil</Link>
                 </li>
                 <li>
-                    <Link to="/about">About</Link>
+                    <Link to="/about">Acerca de</Link>
                 </li>
                 <li>
                     <Link to="/frequentquestions">Preguntas frecuentes</Link>
@@ -31,7 +31,7 @@ export default function NavBar() {
                 )}
                 {auth.userEmail && (
                     <div className='logout'>
-                        <Button onClick={() => auth.logout()} content="Logout" type="submit"></Button>
+                        <Button onClick={() => auth.logout()} content="Cerrar Sesion" type="submit"></Button>
                     </div>
                 )}
             </ul>
