@@ -12,30 +12,62 @@ import NewPayMethodsPage from "../components/views/NewPayMethodPage";
 import RequireAuth from "../utils/RequireAuth";
 import HomeTravelerUser from "../components/views/HomeTravelerUser";
 import ActiveTrips from "../components/views/ActiveTrips";
-
+import Contact from "../components/views/Contact"
 export default function AppRoutes() {
     return (
-        <Router>
-            <header>
-                <NavBar />
-            </header>
+      <Router>
+        <header>
+          <NavBar />
+        </header>
 
-            <main>
-                <div className='container'>
-                    <Routes>
-                        <Route path="/landingpage" element={<LandingPage />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/" element={<LandingPage />} />
-                        <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
-                        <Route path="/frequentquestions" element={<Faq />} />
-                        <Route path="/profile/paymethods" element={<RequireAuth><PayMethodsLandingPage /></RequireAuth>} /> 
-                        <Route path="/profile/paymethods/newpaymethodspage" element={<NewPayMethodsPage />} /> 
-                        <Route path="/userhome" element={<RequireAuth><HomeTravelerUser /></RequireAuth>} />
-                        <Route path="/activetrips" element={<RequireAuth><ActiveTrips /></RequireAuth>} />
-                    </Routes>
-                </div>
-            </main>
-        </Router>
+        <main>
+          <div className="container">
+            <Routes>
+              <Route path="/landingpage" element={<LandingPage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route
+                path="/profile"
+                element={
+                  <RequireAuth>
+                    <Profile />
+                  </RequireAuth>
+                }
+              />
+              <Route path="/frequentquestions" element={<Faq />} />
+              <Route
+                path="/profile/paymethods"
+                element={
+                  <RequireAuth>
+                    <PayMethodsLandingPage />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/profile/paymethods/newpaymethodspage"
+                element={<RequireAuth><NewPayMethodsPage /></RequireAuth>}
+              />
+              <Route
+                path="/userhome"
+                element={
+                  <RequireAuth>
+                    <HomeTravelerUser />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/activetrips"
+                element={
+                  <RequireAuth>
+                    <ActiveTrips />
+                  </RequireAuth>
+                }
+              />
+              <Route path="/Contact" element={<Contact />}></Route>
+            </Routes>
+          </div>
+        </main>
+      </Router>
     );
 }

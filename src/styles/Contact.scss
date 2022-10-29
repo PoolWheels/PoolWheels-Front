@@ -1,0 +1,73 @@
+body {
+    font-family:Helvetica; font-size: 15px; background-color: rgba(13, 16, 23, 1); margin:0;
+}
+#blockLogo1E {
+    margin: 10px 0px 10px; display: flex; text-align: center;
+}
+    .buttonImg1E {
+        background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;
+    }
+        #logo1E {
+            margin: auto; float: left; height: 180px; width: 250px;
+        }
+            .appLogo1E {
+                margin: auto; float: left;
+            }
+   
+
+.blockMain1E {
+    display: grid; grid-template-columns: 0.6fr 0.2fr 0.2fr; height: 77vh; max-width: 100%;
+}
+    .blockUbi1E {
+        position: relative; display: flex; flex-direction: column; min-height: 90%; width:600px;background-color: rgba(33, 36, 43, 1); border-top: 4px solid rgba(13, 16, 23, 1); border-left: 2px solid rgba(13, 16, 23, 1); border-right: 2px solid rgba(13, 16, 23, 1); transition: .5s ease;
+    }
+        .blockSub1E {
+            width: 100%; margin: 20px auto 20px; text-align: center;
+        }
+            .subtitle1E {
+                font-weight: bold; color:rgba(255, 255, 255, 1);
+            }
+        .blockMap1E {
+            background-color:rgba(255, 255, 255, 0);
+        }
+            #map1E {
+                width: 90%; height: 300px; border: none; border-radius: 20px; border: 2px solid rgba(0, 50, 165, 1);
+            }
+        .blockAddress1E {
+            margin: 20px auto 10px; text-align: center; height: 28px;
+        }
+            .label1E {
+                color: rgb(255, 255, 255, 1);
+            }
+                .blockUbi1E:hover {
+                    background-color: rgb(0, 65, 157, 1);
+                }
+    .blockEmail1E {
+        position: relative; display: flex; flex-direction: column; min-height: 90%;width:620px; background-color: rgba(43, 46, 53, 1); border-top: 4px solid rgba(13, 16, 23, 1); border-left: 2px solid rgba(13, 16, 23, 1); border-right: 2px solid rgba(13, 16, 23, 1); transition: .5s ease;
+    }
+        .blockLogContact1E {            
+            text-align: center;
+        }
+            .logoContact1E {
+                height: 150px; width: 156px;
+            }
+        .blockInfLbl1E {
+            margin: 20px auto 10px; text-align: center;
+        }
+            .blockEmail1E:hover {
+                background-color: rgb(0, 75, 167, 1);
+            }
+   
+    .blockUbi1E, .blockEmail1E {
+        display: flex; justify-content: center; align-items: center;
+    }
+   
+#blockInfo1E {
+    padding: 23px 0px 24px; margin: 4px auto auto; background-color: rgba(22, 27, 33, 1); border-top: 1px solid rgba(48, 53, 59, 1); text-align: center;
+}
+    .optFooter1E {
+        padding: 0px 40px 0px; margin: auto auto auto; color: rgba(255, 255, 255, 1); text-decoration: none;
+    }
+        .optFooter1E:hover {
+            background-color: rgba(255, 255, 255, 0); color: rgba(70, 140, 255, 1);
+        }
