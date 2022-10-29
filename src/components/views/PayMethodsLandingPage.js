@@ -2,12 +2,15 @@ import React, { useEffect, useState} from "react";
 import { Grid } from "@mui/material";
 import Button from '../Button.js';
 import PayMethodS from "../PayMethodS.js"
+import { useAuth } from '../../contexts/Auth.js';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/Auth';
 
 
 
+
 function PayMethodsLandingPage() {
+    const auth=useAuth();
     const [PayMethods, setPayMethods] = useState([]);
     const [inLPage, setInLPage] = useState({ inHome: false });
     const [deleted, setDeleted]= useState({deleted:false});
