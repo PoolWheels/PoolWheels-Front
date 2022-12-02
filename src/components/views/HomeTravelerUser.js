@@ -100,7 +100,7 @@ function HomeTravelerUser() {
         align="center"
         type="submit"
         onClick={(e) => navigate("/activetrips")}
-        content={"RESERVAR NUEVO VIAJE "}
+        content={"RESERVAR VIAJE"}
       ></Button>
     </div>
   );
